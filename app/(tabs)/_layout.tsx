@@ -26,6 +26,7 @@ export default function TabNavigation() {
           paddingTop: 10,
           paddingBottom: 20,
           height: 80,
+          backgroundColor: "#121212",
         },
         tabBarLabelStyle: {
           fontSize: fontSize.xs,
@@ -34,6 +35,7 @@ export default function TabNavigation() {
         tabBarBackground: () => (
           <BlurView
             intensity={95}
+            tint="dark"
             style={{
               ...StyleSheet.absoluteFillObject,
               overflow: "hidden",

@@ -1,21 +1,43 @@
-import { StackScreenWithSearchBar } from "@/constants/layout";
-import { defaultStyles } from "@/styles";
 import { Stack } from "expo-router";
-import { View } from "react-native";
+import { Platform } from "react-native";
+import { colors } from "@/constants/tokens";
 
 const SongsScreenLayout = () => {
   return (
-    <View style={defaultStyles.container}>
-      <Stack>
-        <Stack.Screen
-          name="index"
-          options={{ 
-            ...StackScreenWithSearchBar,
-            headerTitle: "Songs",
-          }}
-        />
-      </Stack>
-    </View>
+    <Stack>
+      <Stack.Screen
+        name="index"
+        options={{
+          title: "Songs",
+
+          // Large title only on iOS
+          headerLargeTitle: Platform.OS === "ios",
+
+          // Dark header background
+          headerStyle: {
+            backgroundColor: colors.background,
+          },
+
+          // Title color
+          headerTintColor: colors.text,
+
+          // Large title color
+          headerLargeTitleStyle: {
+            color: colors.text,
+          },
+
+          ...(Platform.OS === "ios"
+            ? {
+                headerSearchBarOptions: {
+                  placeholder: "Find in songs",
+                  hideWhenScrolling: false,
+                  tintColor: colors.primary,
+                },
+              }
+            : {}),
+        }}
+      />
+    </Stack>
   );
 };
 
