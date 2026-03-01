@@ -1,8 +1,10 @@
-import { FlatList, FlatListProps, StyleSheet, View } from "react-native";
+import { FlatList, FlatListProps, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import TrackListItem from "./TrackListItem";
 import { utilsStyles } from "@/styles";
 import TrackPlayer, {Track } from 'react-native-track-player'
+import { Image } from "expo-image";
+import { unknownTrackImageUri } from "@/constants/images";
 
 // type Track = {
 //   title: string;
@@ -42,6 +44,15 @@ export default function TrackList({
         paddingTop: 50,
         paddingBottom: 128,
       }}
+      ListEmptyComponent={<View>
+        <Text style={utilsStyles.emptyContentText}>No songs found</Text>
+        <Image 
+          source={{
+            uri: unknownTrackImageUri,
+          }}
+          style={utilsStyles.emptyContentImage}
+        />
+      </View>}
       keyExtractor={(item,index) => item.id}
       renderItem={({ item }) => (
         <TrackListItem
