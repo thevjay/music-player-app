@@ -23,7 +23,18 @@ export default function RootLayout() {
           headerShown: false,
           headerTitleAlign: "center",
         }}
-      />
+      >
+        <Stack.Screen 
+          name="player"
+          options={{
+            presentation: 'card',
+            gestureEnabled: true,
+            gestureDirection: 'vertical',
+            animationDuration: 400,
+            headerShown: false
+          }}
+        />
+      </Stack>
       <StatusBar style="auto" />
     </>
   );
